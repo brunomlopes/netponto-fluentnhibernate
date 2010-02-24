@@ -47,6 +47,7 @@ namespace Web
             var settings = new SparkSettings()
                 .SetDebug(true)
                 .AddAssembly("Web");
+
             ViewEngines.Engines.Add(new SparkViewFactory(settings));
         }
 
