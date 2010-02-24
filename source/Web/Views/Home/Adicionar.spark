@@ -1,0 +1,57 @@
+<viewdata model="Web.Models.Home.Adicionar" />
+<div id="wrapper">
+    <div id="header">
+        <h1>
+            Nova casa
+        </h1>
+    </div>
+    <div class="generic sixforty clear end">
+        <% Html.BeginForm(); %>
+        <fieldset>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            ${Html.LabelFor(m => m.Descricao)}
+                        </td>
+                        <td>
+                            ${Html.TextAreaFor(m => m.Descricao)}
+                        </td>
+                        <td>
+                            ${Html.ValidationMessageFor(m => m.Descricao)}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ${Html.LabelFor(m => m.Tipologia)}
+                        </td>
+                        <td>
+                            ${Html.DropDownListFor(m => m.Tipologia, new SelectList(Model.Tipologias, "Id",
+                            "Nome"))}
+                        </td>
+                        <td>
+                            ${Html.ValidationMessageFor(m => m.Tipologia)}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ${Html.LabelFor(m => m.Preco)}
+                        </td>
+                        <td>
+                            ${Html.TextBoxFor(m => m.Preco)}
+                        </td>
+                        <td>
+                            ${Html.ValidationMessageFor(m => m.Preco)}
+                        </td>
+                    </tr>
+                    <tr>
+                    <td><input type="submit" value="adicionar"></input></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <% Html.EndForm(); %>
+    </div>
+</div>

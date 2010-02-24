@@ -77,11 +77,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Home\Adicionar.cs" />
     <Compile Include="Models\Home\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\style.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="Content\typogridphy.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -111,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.spark" />
+    <None Include="Views\Home\Adicionar.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\_global.spark" />
   </ItemGroup>
