@@ -1,0 +1,33 @@
+﻿
+
+<use namespace="CachingViewHunks.Models"/>
+
+#// ViewData["employee"] is of type ValueHolder<Employee>
+#// it has an 'int Key' and a lazy-loaded 'Employee Value' property
+#// if you only refer to the 'Value' inside cached segments you can
+#// avoid the database call when you have a cache-hit
+
+#// The viewdata dotted attribute just below is an eval trick. 
+#// It will result in aliased properties like:
+#//   public Employee employee { get { ViewData.Eval('employee.Value'); } }
+#// and
+#//   public int EmployeeID { get { ViewData.Eval('employee.Key'); } }
+        
+<viewdata 
+	employee.Value="Employee employee" 
+	employee.Key="int EmployeeID"/>
+
+#// You can also refer to the data with the ValueHolder class instead, with
+#//   <viewdata employee="Spark.ValueHolder[[int, Employee]]"/>
+#// and using 
+#//   ${employee.Key} and ${employee.Value.FirstName}
+
+<h2 cache.key="EmployeeID">${employee.FirstName} ${employee.LastName}</h2>
+
+<p>Page viewed ${DateTime.Now}<p>
+<cache key="EmployeeID" expires="20">
+<p>This part cached ${DateTime.Now} - will drop out of cache if unused for 20 seconds<p>
+<p>Employee: ${employee.Title} ${employee.FirstName} ${employee.LastName}</p>
+
+<p>Hire Date: ${employee.HireDate.GetValueOrDefault().ToString("D")}<p>
+</cache>

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <global type="string" Title="'Partial demo'"/>
+    <title>${Title}</title>
+  </head>
+  <body>
+    #Html.RenderPartial("header");
+    <Menu/>
+    <use:view/>
+    #Html.RenderPartial("footer");
+
+	<use:foo/>
+    <hr/>
+    <code>
+      <var entry="Spark.CompiledViewHolder.Current.Lookup(GeneratedViewId)"/>
+      !{H(entry.SourceCode).Replace("\r\n", "<br/>").Replace(" ", "&nbsp;")}
+    </code>
+  </body>
+</html>
