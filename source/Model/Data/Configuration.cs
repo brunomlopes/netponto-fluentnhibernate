@@ -13,13 +13,15 @@ namespace Model.Data
 
         public Configuration(string databaseFile)
         {
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
             _configuration = Fluently.Configure()
                 .Database(
                     SQLiteConfiguration.Standard
                         .UsingFile(databaseFile)
                 )
-                .Mappings(m =>
+                .Mappings(m => 
                           m.AutoMappings.Add(AutoMap.AssemblyOf<Casa>().Where(t => t.Namespace.EndsWith("Entities"))));
+            
         }
 
         public static FluentConfiguration FluentConfiguration
@@ -29,7 +31,6 @@ namespace Model.Data
 
         public static ISessionFactory CreateSessionFactory()
         {
-            
             return FluentConfiguration
                 .BuildSessionFactory();
         }

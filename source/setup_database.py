@@ -1,4 +1,4 @@
-from setup_common import config
+from common_database import config
 from NHibernate.Tool import hbm2ddl
 from System.IO import Path
 
