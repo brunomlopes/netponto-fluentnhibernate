@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
+using Autofac.Core;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
+using Model.Data;
+using NHibernate;
 using Spark;
 using Spark.Web.Mvc;
 
@@ -53,9 +53,27 @@ namespace Web
 
         private void SetupAutofac()
         {
+            var dbPath = this.Server.MapPath(@"~\app_data\database.db");
+
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            builder
+                .Register(c => c.Resolve<ISessionFactory>().OpenSession())
+                .HttpRequestScoped();
+            builder
+                .Register(
+                    c =>
+                    c.Resolve<Configuration>(new Parameter[]
+                                                 {
+                                                     new PositionalParameter(0, dbPath)
+                                                 })
+                        .CreateSessionFactory())
+                .SingleInstance();
+            builder
+                .RegisterType<Configuration>()
+                .SingleInstance();
 
             _containerProvider = new ContainerProvider(builder.Build());
 

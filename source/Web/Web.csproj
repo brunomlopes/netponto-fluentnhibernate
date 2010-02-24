@@ -40,6 +40,10 @@
     <Reference Include="Autofac.Integration.Web">
       <HintPath>..\..\lib\Autofac-2.1.10.754-NET35\Library\Autofac.Integration.Web.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\lib\fluentnhibernate-1.0RTM\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
     <Reference Include="Spark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Spark-1.0.1.0-release\Bin\Spark.dll</HintPath>
@@ -73,6 +77,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Home\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,12 +107,18 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\_global.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{F3AFC43F-52C4-4289-ACD8-C4BB709E11DC}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

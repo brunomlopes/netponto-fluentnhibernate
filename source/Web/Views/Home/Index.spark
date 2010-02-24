@@ -1,3 +1,14 @@
-﻿<h1>
-    Lista de casas
-</h1>
+﻿<viewdata model="Web.Models.Home.Index" />
+<div id="wrapper">
+    <div id="header"><h1>
+        Lista de casas
+    </h1>
+    </div>
+    <for each="var casa in Model.Casas">
+    <div class="generic twotwenty">
+        <h2>${casa.Tipologia.Nome}</h3>
+        <h3>${casa.Descricao}</h3>
+        <p class="float-right">${casa.Preco.ToString("C")}</p>
+    </div>
+</for>
+</div>

@@ -24,12 +24,12 @@ namespace Model.Data
             
         }
 
-        public static FluentConfiguration FluentConfiguration
+        public FluentConfiguration FluentConfiguration
         {
             get { return _configuration; }
         }
 
-        public static ISessionFactory CreateSessionFactory()
+        public ISessionFactory CreateSessionFactory()
         {
             return FluentConfiguration
                 .BuildSessionFactory();
