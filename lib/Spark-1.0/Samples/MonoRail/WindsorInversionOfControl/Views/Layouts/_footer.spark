@@ -1,0 +1,4 @@
+<div id="footer">
+  <p>!{Url.Link("View source", new {controller="home", action="viewsource", @params=new{id=GeneratedViewId}})}</p>
+</div>
+

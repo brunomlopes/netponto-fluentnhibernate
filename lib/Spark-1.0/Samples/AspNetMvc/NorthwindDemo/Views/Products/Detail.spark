@@ -1,0 +1,25 @@
+﻿<content name="MainContent">
+    <viewdata model="Product"/>
+    
+    <h2>Product Detail</h2>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>${Model.ProductName}</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>${Model.Category.CategoryName}</td>
+        </tr>
+        <tr>
+            <th>Supplier</th>
+            <td>${Model.Supplier.CompanyName}</td>
+        </tr>
+        <tr>
+            <th>Unit Price</th>
+            <td>${Model.UnitPrice}</td>
+        </tr>
+    </table>
+    !{Html.RouteLink("back", new {controller="Products", action="List", id=Model.Category.CategoryName})}
+</content>

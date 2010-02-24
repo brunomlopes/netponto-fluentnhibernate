@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <global type="string" Title="'IoC Demo'"/>
+    <title>${Title}</title>
+  </head>
+  <body>
+    <Menu name="'top-nav'"/>
+    <use content="view"/>
+  </body>
+</html>
