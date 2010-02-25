@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\DataConfiguration.cs" />
     <Compile Include="Entities\Casa.cs" />
     <Compile Include="Entities\Tipologia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

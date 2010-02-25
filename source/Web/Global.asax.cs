@@ -52,29 +52,33 @@ namespace Web
 
         private void SetupAutofac()
         {
-            var dbPath = this.Server.MapPath(@"~\app_data\database.db");
-            var nhibernateConfigPath = this.Server.MapPath(@"~\nhibernate.config");
+            var databaseFile = Server.MapPath(@"~\app_data\database.db");
+            var pathToNhConfig = Server.MapPath(@"~\nhibernate.config");
 
             var builder = new ContainerBuilder();
 
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-
             builder
-                .Register(c => c.Resolve<ISessionFactory>().OpenSession())
-                .HttpRequestScoped();
+                .RegisterType<DataConfiguration>()
+                .SingleInstance();
+
             builder
                 .Register(
                     c =>
                     c.Resolve<DataConfiguration>(new Parameter[]
-                                                 {
-                                                     new PositionalParameter(0, dbPath),
-                                                     new PositionalParameter(1, nhibernateConfigPath)
-                                                 })
+                                                     {
+                                                         new NamedParameter("databaseFile", databaseFile),
+                                                         new NamedParameter("pathToNhConfig", pathToNhConfig)
+                                                     })
                         .CreateSessionFactory())
+                .As<ISessionFactory>()
                 .SingleInstance();
+
             builder
-                .RegisterType<DataConfiguration>()
-                .SingleInstance();
+               .Register(c => c.Resolve<ISessionFactory>().OpenSession())
+               .As<ISession>()
+               .HttpRequestScoped();
+
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
             _containerProvider = new ContainerProvider(builder.Build());
 
