@@ -10,7 +10,7 @@ clr.AddReferenceToFile("HibernatingRhinos.Profiler.Appender.dll")
 
 from Model.Data import DataConfiguration
 
-c = DataConfiguration(Path.GetFullPath(r"web\app_data\database.db"),Path.GetFullPath(r"web\nhibernate.config"))
+c = DataConfiguration(Path.GetFullPath(r"web\app_data\database.db"))
 config = c.GetConfiguration()
 
 def flush_nhprof():

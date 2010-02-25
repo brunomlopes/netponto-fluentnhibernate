@@ -1,4 +1,8 @@
+using FluentNHibernate.Automapping;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
+using Model.Entities;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -8,12 +12,16 @@ namespace Model.Data
     {
         private Configuration _configuration;
 
-        public DataConfiguration(string databaseFile, string pathToNhConfig)
+        public DataConfiguration(string databaseFile)
         {
             NHibernateProfiler.Initialize();
-            _configuration = new Configuration().Configure(pathToNhConfig);
-            _configuration.SetProperty(Environment.ConnectionString,
-                                       string.Format("Data Source={0}", databaseFile));
+            _configuration = Fluently.Configure()
+                .Database(
+                    SQLiteConfiguration.Standard
+                        .UsingFile(databaseFile)
+                )
+                .Mappings(m => m.HbmMappings.AddFromAssemblyOf<Casa>())
+                .BuildConfiguration();
         }
 
         public Configuration GetConfiguration()

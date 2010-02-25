@@ -67,7 +67,6 @@ namespace Web
                     c.Resolve<DataConfiguration>(new Parameter[]
                                                      {
                                                          new NamedParameter("databaseFile", databaseFile),
-                                                         new NamedParameter("pathToNhConfig", pathToNhConfig)
                                                      })
                         .CreateSessionFactory())
                 .As<ISessionFactory>()
