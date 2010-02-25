@@ -57,7 +57,6 @@
   <ItemGroup>
     <Compile Include="Data\Configuration.cs" />
     <Compile Include="Entities\Casa.cs" />
-    <Compile Include="Entities\Foto.cs" />
     <Compile Include="Entities\Tipologia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

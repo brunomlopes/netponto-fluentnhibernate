@@ -9,11 +9,9 @@ namespace Model.Entities
         public virtual string Descricao { get; set; }
         public virtual Tipologia Tipologia { get; set; }
         public virtual decimal Preco { get; set; }
-        public virtual IList<Foto> Fotos { get; private set; }
 
         protected Casa()
         {
-            Fotos = new List<Foto>();
         }
 
         public Casa(string descricao, Tipologia tipologia, decimal preco)

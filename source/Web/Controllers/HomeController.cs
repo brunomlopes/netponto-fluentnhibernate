@@ -21,6 +21,7 @@ namespace Web.Controllers
         public ActionResult Index(int? highlight)
         {
             var casas = _session.CreateCriteria<Casa>().List<Casa>();
+
             return View(new Index(casas, highlight));
         }
         
@@ -28,6 +29,7 @@ namespace Web.Controllers
         public ActionResult Adicionar()
         {
             var tipologias = _session.CreateCriteria<Tipologia>().List<Tipologia>();
+
             return View(new Adicionar(){Tipologias = tipologias});
         }
 
@@ -37,6 +39,7 @@ namespace Web.Controllers
             var t = _session.Get<Tipologia>(tipologia);
             var casa = new Casa(descricao, t, preco);
             _session.Save(casa);
+
             return Redirect(Url.Action("Index", new{highlight = casa.Id})+"#"+casa.Id);
         }
     }

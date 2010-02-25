@@ -4,10 +4,11 @@ from System.IO import Path, Directory
 
 
 def with_mappings(mapping):
-    mappingDirectory = Path.GetFullPath("mappings")
+    mappingDirectory = Path.GetFullPath(r"model\mappings")
     if not Directory.Exists(mappingDirectory):
         Directory.CreateDirectory(mappingDirectory)
     mapping.AutoMappings.ExportTo(mappingDirectory)
     mapping.FluentMappings.ExportTo(mappingDirectory)
+
 c.FluentConfiguration.Mappings(with_mappings)
 c.FluentConfiguration.BuildConfiguration()

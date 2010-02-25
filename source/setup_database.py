@@ -3,7 +3,7 @@ from common_database import config,c
 from NHibernate.Tool import hbm2ddl
 from System.IO import Path
 from System import Random
-from Model.Entities import Casa, Tipologia, Foto
+from Model.Entities import Casa, Tipologia
 
 r = Random()
 def choice(list):
@@ -21,7 +21,9 @@ transaction = session.BeginTransaction()
 t1 = Tipologia("T1")
 t2 = Tipologia("T2")
 t3 = Tipologia("T3")
-for tipologia in [t1,t2,t3]:
+t4 = Tipologia("T4")
+tipologias = [t1,t2,t3,t4]
+for tipologia in tipologias:
     session.Save(tipologia)
 
 def getDescricao():
@@ -36,9 +38,11 @@ def priceFor(t):
         return randint(750, 2000)*100
     if t == t3:
         return randint(1500, 4000)*100
+    if t == t4:
+        return randint(3000, 10000)*100
 
 for i in range(50):
-    t = choice([t1,t2,t3])
+    t = choice(tipologias)
     session.Save(Casa(getDescricao(), t, priceFor(t)))
 
 transaction.Commit()
