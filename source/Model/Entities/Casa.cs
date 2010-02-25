@@ -9,6 +9,7 @@ namespace Model.Entities
         public virtual string Descricao { get; set; }
         public virtual Tipologia Tipologia { get; set; }
         public virtual decimal Preco { get; set; }
+        public virtual IList<Oferta> Ofertas { get; private set; }
 
         protected Casa()
         {
@@ -19,6 +20,13 @@ namespace Model.Entities
             Descricao = descricao;
             Tipologia = tipologia;
             Preco = preco;
+            Ofertas = new List<Oferta>();
+        }
+
+        public virtual void AdicionarOferta(Oferta oferta)
+        {
+            Ofertas.Add(oferta);
+            oferta.Casa = this;
         }
     }
 }

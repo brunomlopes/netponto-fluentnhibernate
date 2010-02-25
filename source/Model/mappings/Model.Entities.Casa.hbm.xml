@@ -5,8 +5,12 @@
     </id>
     <property name="Descricao" />
     <property name="Preco"/>
-    <many-to-one class="Model.Entities.Tipologia, Model" name="Tipologia">
+    <many-to-one name="Tipologia" class="Tipologia">
       <column name="Tipologia_id" />
     </many-to-one>
+    <bag name="Ofertas" cascade="all" inverse="true">
+      <key column="Casa_id"/>
+      <one-to-many class="Oferta" />
+    </bag>
   </class>
 </hibernate-mapping>

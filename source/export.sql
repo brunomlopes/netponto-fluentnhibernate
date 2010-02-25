@@ -3,6 +3,8 @@
 
     drop table if exists Casa
 
+    drop table if exists Oferta
+
     create table Tipologia (
         Id  integer,
        Nome TEXT,
@@ -14,5 +16,13 @@
        Descricao TEXT,
        Preco NUMERIC,
        Tipologia_id INTEGER,
+       primary key (Id)
+    )
+
+    create table Oferta (
+        Id  integer,
+       Comprador TEXT,
+       Valor NUMERIC,
+       Casa_id INTEGER,
        primary key (Id)
     )

@@ -4,6 +4,7 @@
     <title>${H(Title)}</title>
     <link rel="stylesheet" href="~/Content/typogridphy.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/site.css" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.3.2.js"></script>
     <use content="head"/>
   </head>
   <body>
