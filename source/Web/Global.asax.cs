@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
@@ -54,6 +53,7 @@ namespace Web
         private void SetupAutofac()
         {
             var dbPath = this.Server.MapPath(@"~\app_data\database.db");
+            var nhibernateConfigPath = this.Server.MapPath(@"~\nhibernate.config");
 
             var builder = new ContainerBuilder();
 
@@ -65,14 +65,15 @@ namespace Web
             builder
                 .Register(
                     c =>
-                    c.Resolve<Configuration>(new Parameter[]
+                    c.Resolve<DataConfiguration>(new Parameter[]
                                                  {
-                                                     new PositionalParameter(0, dbPath)
+                                                     new PositionalParameter(0, dbPath),
+                                                     new PositionalParameter(1, nhibernateConfigPath)
                                                  })
                         .CreateSessionFactory())
                 .SingleInstance();
             builder
-                .RegisterType<Configuration>()
+                .RegisterType<DataConfiguration>()
                 .SingleInstance();
 
             _containerProvider = new ContainerProvider(builder.Build());

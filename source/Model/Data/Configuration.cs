@@ -1,38 +1,29 @@
-using FluentNHibernate.Automapping;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using Model.Entities;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
+using NHibernate.Cfg;
 
 namespace Model.Data
 {
-    public class Configuration
+    public class DataConfiguration
     {
-        private static FluentConfiguration _configuration;
+        private Configuration _configuration;
 
-        public Configuration(string databaseFile)
+        public DataConfiguration(string databaseFile, string pathToNhConfig)
         {
-            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
-            _configuration = Fluently.Configure()
-                .Database(
-                    SQLiteConfiguration.Standard
-                        .UsingFile(databaseFile)
-                )
-                .Mappings(m => 
-                          m.AutoMappings.Add(AutoMap.AssemblyOf<Casa>().Where(t => t.Namespace.EndsWith("Entities"))));
-            
+            NHibernateProfiler.Initialize();
+            _configuration = new Configuration().Configure(pathToNhConfig);
+            _configuration.SetProperty(Environment.ConnectionString,
+                                       string.Format("Data Source={0}", databaseFile));
         }
 
-        public FluentConfiguration FluentConfiguration
+        public Configuration GetConfiguration()
         {
-            get { return _configuration; }
+            return _configuration;
         }
 
         public ISessionFactory CreateSessionFactory()
         {
-            return FluentConfiguration
-                .BuildSessionFactory();
+            return _configuration.BuildSessionFactory();
         }
     }
 }

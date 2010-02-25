@@ -1,0 +1,12 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Model" namespace="Model.Entities">
+  <class name="Casa" table="Casa">
+    <id name="Id" >
+      <generator class="identity" />
+    </id>
+    <property name="Descricao" />
+    <property name="Preco"/>
+    <many-to-one class="Model.Entities.Tipologia, Model" name="Tipologia">
+      <column name="Tipologia_id" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>
