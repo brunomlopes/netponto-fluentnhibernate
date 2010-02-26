@@ -64,14 +64,10 @@
     <Compile Include="Entities\Casa.cs" />
     <Compile Include="Entities\Oferta.cs" />
     <Compile Include="Entities\Tipologia.cs" />
+    <Compile Include="Mappings\CasaMap.cs" />
+    <Compile Include="Mappings\OfertaMap.cs" />
+    <Compile Include="Mappings\TipologiaMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="mappings\Model.Entities.Casa.hbm.xml" />
-    <EmbeddedResource Include="mappings\Model.Entities.Tipologia.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="mappings\Model.Entities.Oferta.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,7 @@
-using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
-using Model.Entities;
+using Model.Mappings;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -19,8 +18,9 @@ namespace Model.Data
                 .Database(
                     SQLiteConfiguration.Standard
                         .UsingFile(databaseFile)
+                        .AdoNetBatchSize(16)
                 )
-                .Mappings(m => m.HbmMappings.AddFromAssemblyOf<Casa>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CasaMap>())
                 .BuildConfiguration();
         }
 
