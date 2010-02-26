@@ -1,7 +1,8 @@
+using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
-using Model.Mappings;
+using Model.Entities;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -21,7 +22,7 @@ namespace Model.Data
                         .UsingFile(databaseFile)
                         .AdoNetBatchSize(16)
                 )
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CasaMap>());
+                .Mappings(m => m.AutoMappings.Add(AutoMap.AssemblyOf<Casa>().Where(c => c.Namespace.EndsWith("Entities"))))
 
             _configuration = _fluentConfiguration
                 .BuildConfiguration();
