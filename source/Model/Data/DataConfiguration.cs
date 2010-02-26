@@ -10,23 +10,30 @@ namespace Model.Data
     public class DataConfiguration
     {
         private Configuration _configuration;
+        private FluentConfiguration _fluentConfiguration;
 
         public DataConfiguration(string databaseFile)
         {
             NHibernateProfiler.Initialize();
-            _configuration = Fluently.Configure()
+            _fluentConfiguration = Fluently.Configure()
                 .Database(
                     SQLiteConfiguration.Standard
                         .UsingFile(databaseFile)
                         .AdoNetBatchSize(16)
                 )
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CasaMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CasaMap>());
+
+            _configuration = _fluentConfiguration
                 .BuildConfiguration();
         }
 
         public Configuration GetConfiguration()
         {
             return _configuration;
+        }
+        public FluentConfiguration GetFluentConfiguration()
+        {
+            return _fluentConfiguration;
         }
 
         public ISessionFactory CreateSessionFactory()
