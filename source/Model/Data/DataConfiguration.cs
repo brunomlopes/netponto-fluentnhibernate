@@ -22,7 +22,7 @@ namespace Model.Data
                         .UsingFile(databaseFile)
                         .AdoNetBatchSize(16)
                 )
-                .Mappings(m => m.AutoMappings.Add(AutoMap.AssemblyOf<Casa>().Where(c => c.Namespace.EndsWith("Entities"))))
+                .Mappings(m => m.AutoMappings.Add(AutoMap.AssemblyOf<Casa>().Where(c => c.Namespace.EndsWith("Entities"))));
 
             _configuration = _fluentConfiguration
                 .BuildConfiguration();
