@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Model;
 using Model.Entities;
 
 namespace Web.Models.Home
@@ -18,6 +19,7 @@ namespace Web.Models.Home
             Descricao = casa.Descricao;
             Tipologia = casa.Tipologia;
             Preco = casa.Preco;
+            Localizacao = casa.Localizacao;
         }
 
         public string Titulo { get; set; }
@@ -26,6 +28,7 @@ namespace Web.Models.Home
         public string Descricao { get; set; }
         public Tipologia Tipologia { get; set; }
         public decimal Preco { get; set; }
+        public Localizacao Localizacao { get; set; }
 
         public IEnumerable<Tipologia> Tipologias { get; set; }
     }

@@ -4,6 +4,7 @@ using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Model.Conventions;
 using Model.Entities;
+using Model.Overrides;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -25,7 +26,8 @@ namespace Model.Data
                 )
                 .Mappings(m => m.AutoMappings.Add(AutoMap
                                                       .AssemblyOf<Casa>().Where(c => c.Namespace.EndsWith("Entities"))
-                                                      .Conventions.AddFromAssemblyOf<CascadeConvention>()));
+                                                      .Conventions.AddFromAssemblyOf<CascadeConvention>()
+                                                      .UseOverridesFromAssemblyOf<CasaOverride>()));
 
             _configuration = _fluentConfiguration
                 .BuildConfiguration();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model;
 using Model.Entities;
 using NHibernate;
 using Web.Models.Home;
@@ -34,12 +35,13 @@ namespace Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Adicionar(string descricao, int tipologia, decimal  preco)
+        public ActionResult Adicionar(string descricao, int tipologia, Localizacao localizacao, decimal preco)
         {
             _session.BeginTransaction();
             var t = _session.Get<Tipologia>(tipologia);
 
             var casa = new Casa(descricao, t, preco);
+            casa.Localizacao = localizacao;
 
             _session.Save(casa);
             _session.Transaction.Commit();
@@ -69,7 +71,7 @@ namespace Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Editar(int id, string descricao, int tipologia, decimal preco)
+        public ActionResult Editar(int id, string descricao, int tipologia, Localizacao localizacao, decimal preco)
         {
             _session.BeginTransaction();
             var t = _session.Get<Tipologia>(tipologia);
@@ -78,6 +80,7 @@ namespace Web.Controllers
             casa.Descricao = descricao;
             casa.Tipologia = t;
             casa.Preco = preco;
+            casa.Localizacao = localizacao;
 
             _session.Update(casa);
             _session.Transaction.Commit();

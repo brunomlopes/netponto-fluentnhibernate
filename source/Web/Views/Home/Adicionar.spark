@@ -21,6 +21,17 @@
                         <td>
                             ${Html.ValidationMessageFor(m => m.Descricao)}
                         </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            ${Html.LabelFor(m => m.Localizacao)}
+                        </td>
+                        <td>
+                            ${Html.EditorFor(m => m.Localizacao)}
+                        </td>
+                        <td>
+                            ${Html.ValidationMessageFor(m => m.Localizacao)}
+                        </td>
                     </tr>
                     <tr>
                         <td>

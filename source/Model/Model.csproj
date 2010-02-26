@@ -65,6 +65,8 @@
     <Compile Include="Entities\Casa.cs" />
     <Compile Include="Entities\Oferta.cs" />
     <Compile Include="Entities\Tipologia.cs" />
+    <Compile Include="Localizacao.cs" />
+    <Compile Include="Overrides\CasaOverride.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

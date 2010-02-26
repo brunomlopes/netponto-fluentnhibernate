@@ -9,6 +9,7 @@
         <div class="generic twotwenty ${casa.Id == Model.Highlight ? "highlight" : ""}">
             <a name="${casa.Id}"><h2 class="right-float">${casa.Tipologia.Nome}</h2></a>
             <h3>${Html.Encode(casa.Descricao)}</h3>
+            <p class="">$!{casa.Localizacao.Zona} <br /> $!{casa.Localizacao.Cidade}</p>
             <p class="">${casa.Preco.ToString("C")}</p>
             <a href="${Url.Action("Editar", new {Id = casa.Id})}" class="editlink">editar</a>
             <div  style="height:11em">
