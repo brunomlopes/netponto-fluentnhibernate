@@ -39,7 +39,7 @@
                             ${Html.LabelFor(m => m.Preco)}
                         </td>
                         <td>
-                            ${Html.TextBoxFor(m => m.Preco)}
+                            ${Html.TextBoxFor(m => m.Preco, new {@class="price"})}€
                         </td>
                         <td>
                             ${Html.ValidationMessageFor(m => m.Preco)}

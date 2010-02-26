@@ -1,6 +1,8 @@
 ﻿label { font-size:1.5em; margin-right:1em; }
 .highlight { background-color:Silver; }
- .mini { margin-left:1em; font-weight:bold;  font-size:.3em;}
- 
- .editlink{color:#000;}
- .editlink:hover{text-decoration:none;}
+h1 .mini { margin-left:1em; font-weight:bold;  font-size:.3em;}
+span .mini { margin-left:1em; font-weight:bold;  font-size:1em;}
+.editlink{color:#000;}
+.editlink:hover{text-decoration:none;}
+.offerform input {font-size:1em;}
+.price {text-align:right; width:7em;}

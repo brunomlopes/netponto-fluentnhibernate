@@ -46,6 +46,19 @@ namespace Web.Controllers
             return Redirect(Url.Action("Index", new{highlight = casa.Id})+"#"+casa.Id);
         }
         
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AdicionarOferta(int idCasa, string comprador, decimal valor)
+        {
+            _session.BeginTransaction();
+
+            var casa = _session.Get<Casa>(idCasa);
+            casa.AdicionarOferta(new Oferta(comprador, valor));
+
+            _session.Update(casa);
+            _session.Transaction.Commit();
+            return Redirect(Url.Action("Index", new{highlight = casa.Id})+"#"+casa.Id);
+        }
+        
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Editar(int id)
         {

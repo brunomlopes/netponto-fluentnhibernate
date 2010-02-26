@@ -11,12 +11,23 @@
             <h3>${Html.Encode(casa.Descricao)}</h3>
             <p class="">${casa.Preco.ToString("C")}</p>
             <a href="${Url.Action("Editar", new {Id = casa.Id})}" class="editlink">editar</a>
-            <ul class="" style="height:4.5em">
-                <li class="caption" ><a href="#" onclick="$('.offer-${casa.Id}').toggle(); return false;">${casa.Ofertas.Count} ofertas</a></li>
-                <for each="var oferta in casa.Ofertas">
-                    <li class="offer-${casa.Id}" style="display:none">${oferta.Comprador} - ${oferta.Valor.ToString("C")}</li>
-                </for>
-            </ul>
+            <div  style="height:11em">
+              <ul class="">
+                  <li class="caption" ><a href="#" onclick="$('.offer-${casa.Id}').toggle(); return false;">${casa.Ofertas.Count} ofertas</a></li>
+                  <for each="var oferta in casa.Ofertas">
+                      <li class="offer-${casa.Id}" style="display:none">${oferta.Comprador} - ${oferta.Valor.ToString("C")}</li>
+                  </for>
+              </ul>
+              <div class="offerform offer-${casa.Id}" style="display:none">
+                <span class="mini">nova oferta</span>
+                <form method="POST" action="${Url.Action("AdicionarOferta")}">
+                  <input type="hidden" name="idCasa" value="${casa.Id}"></input>
+                  <input type="textbox" name="comprador" ></input>
+                  <input type="textbox" name="valor" class="price"></input>€
+                  <input type="submit" value="+"/>
+                </form>
+              </div>
+            </div>
         </div>
     </for>
 </div>
