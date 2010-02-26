@@ -5,8 +5,6 @@ from System.IO import Path
 from System import Random
 from Model.Entities import Casa, Tipologia, Oferta
 
-import setup_database
-
 t1 = Tipologia("T1")
 t2 = Tipologia("T2")
 t3 = Tipologia("T3")
