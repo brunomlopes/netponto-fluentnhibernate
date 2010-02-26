@@ -2,12 +2,13 @@
 <div id="wrapper">
     <div id="header">
         <h1>
-            Nova casa
+            ${Model.Titulo}
         </h1>
     </div>
-    <div class="generic sixforty clear end">
+    <div class="generic sixforty clear end" id="contact-form">
         <% Html.BeginForm(); %>
         <fieldset>
+            <input type="hidden" value ="${Model.Id}"></input>
             <table>
                 <tbody>
                     <tr>
@@ -45,7 +46,7 @@
                         </td>
                     </tr>
                     <tr>
-                    <td><input type="submit" value="adicionar"></input></td>
+                    <td><input type="submit" value="gravar" id="submit"></input></td>
                     <td></td>
                     <td></td>
                     </tr>

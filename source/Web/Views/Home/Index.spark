@@ -6,19 +6,17 @@
         </h1>
     </div>
     <for each="var casa in Model.Casas">
-            
-            <div class="generic twotwenty ${casa.Id == Model.Highlight ? "highlight" : ""}">
-                <a name="${casa.Id}"><h2 class="right-float">${casa.Tipologia.Nome}</h2></a>
-                <h3>${Html.Encode(casa.Descricao)}</h3>
-                <p class="">${casa.Preco.ToString("C")}</p>
-                
-                <ul class="" style="height:50px">
-                    <li class="caption" ><a href="#" onclick="$('.offer-${casa.Id}').toggle(); return false;">${casa.Ofertas.Count} ofertas</a></li>
-                    <for each="var oferta in casa.Ofertas">
-                        <li class="offer-${casa.Id}" style="display:none">${oferta.Comprador} - ${oferta.Valor.ToString("C")}</li>
-                    </for>
-                </ul>
-            </div>
-        
+        <div class="generic twotwenty ${casa.Id == Model.Highlight ? "highlight" : ""}">
+            <a name="${casa.Id}"><h2 class="right-float">${casa.Tipologia.Nome}</h2></a>
+            <h3>${Html.Encode(casa.Descricao)}</h3>
+            <p class="">${casa.Preco.ToString("C")}</p>
+            <a href="${Url.Action("Editar", new {Id = casa.Id})}" class="editlink">editar</a>
+            <ul class="" style="height:4.5em">
+                <li class="caption" ><a href="#" onclick="$('.offer-${casa.Id}').toggle(); return false;">${casa.Ofertas.Count} ofertas</a></li>
+                <for each="var oferta in casa.Ofertas">
+                    <li class="offer-${casa.Id}" style="display:none">${oferta.Comprador} - ${oferta.Valor.ToString("C")}</li>
+                </for>
+            </ul>
+        </div>
     </for>
 </div>

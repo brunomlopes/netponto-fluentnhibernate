@@ -355,7 +355,12 @@ img.right-img{ /* Float any image to the RIGHT and give it some margin */
 #contact-form{
 }
 #contact-form label{
-	width:10em;
+	width:5em;
+	float:left;
+	margin-top:0.6em;
+}
+#contact-form textarea{
+	width:30em;
 	float:left;
 	margin-top:0.6em;
 }

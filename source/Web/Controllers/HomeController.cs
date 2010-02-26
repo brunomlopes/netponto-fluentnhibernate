@@ -30,17 +30,46 @@ namespace Web.Controllers
         {
             var tipologias = _session.CreateCriteria<Tipologia>().List<Tipologia>();
 
-            return View(new Adicionar(){Tipologias = tipologias});
+            return View(new Adicionar("Nova casa"){Tipologias = tipologias});
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Adicionar(string descricao, int tipologia, decimal  preco)
         {
+            _session.BeginTransaction();
             var t = _session.Get<Tipologia>(tipologia);
-            var casa = new Casa(descricao, t, preco);
-            _session.Save(casa);
 
+            var casa = new Casa(descricao, t, preco);
+
+            _session.Save(casa);
+            _session.Transaction.Commit();
             return Redirect(Url.Action("Index", new{highlight = casa.Id})+"#"+casa.Id);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Editar(int id)
+        {
+            var tipologias = _session.CreateCriteria<Tipologia>().List<Tipologia>();
+            var casa = _session.Get<Casa>(id);
+
+            return View("Adicionar", new Adicionar("Editar casa",casa) {Tipologias = tipologias});
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Editar(int id, string descricao, int tipologia, decimal preco)
+        {
+            _session.BeginTransaction();
+            var t = _session.Get<Tipologia>(tipologia);
+            var casa = _session.Get<Casa>(id);
+
+            casa.Descricao = descricao;
+            casa.Tipologia = t;
+            casa.Preco = preco;
+
+            _session.Update(casa);
+            _session.Transaction.Commit();
+            return Redirect(Url.Action("Index", new {highlight = casa.Id}) + "#" + casa.Id);
+
         }
     }
 }
