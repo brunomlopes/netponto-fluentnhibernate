@@ -26,6 +26,19 @@ namespace Web.Controllers
             return View(new Index(casas, highlight));
         }
         
+        public ActionResult Links()
+        {
+            return View();
+        }
+        public ActionResult Techdays()
+        {
+            return View();
+        }
+        public ActionResult Patrocinadores()
+        {
+            return View();
+        }
+        
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Adicionar()
         {

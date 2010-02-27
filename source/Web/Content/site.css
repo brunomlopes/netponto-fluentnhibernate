@@ -1,8 +1,16 @@
 ﻿label { font-size:1.5em; margin-right:1em; }
 .highlight { background-color:Silver; }
 h1 .mini { margin-left:1em; font-weight:bold;  font-size:.3em;}
+h1 a { text-decoration:none ! important}
+h1 a:active { text-decoration:none ! important}
+h1 a:link { text-decoration:none ! important}
+h1 a:hover { text-decoration:none ! important}
+h1 a:visited { text-decoration:none ! important}
 span .mini { margin-left:1em; font-weight:bold;  font-size:1em;}
 .editlink{color:#000;}
 .editlink:hover{text-decoration:none;}
 .offerform input {font-size:1em;}
 .price {text-align:right; width:7em;}
+.links {font-size:2em; }
+.links a {margin-left:4em; margin-bottom:1em}
+.sponsors img {display:block; margin-top:7em; margin-left:auto; margin-right:auto;}

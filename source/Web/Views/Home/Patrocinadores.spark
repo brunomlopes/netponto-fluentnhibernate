@@ -1,0 +1,11 @@
+<div id="wrapper">
+  <div id="header">
+    <h1>
+      Patrocinadores
+    </h1>
+  </div>
+  <div class="sponsors">
+    <img width="60%" src="${Url.Content("~/Content/Novabase.gif")}"/>
+    <img width="80%" src="${Url.Content("~/Content/UserGroupSupportServices.png")}"/>
+  </div>
+</div>

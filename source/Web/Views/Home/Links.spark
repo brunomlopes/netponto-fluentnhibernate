@@ -1,0 +1,32 @@
+﻿<div id="wrapper">
+    <div id="header">
+        <h1>
+          <a href="${Url.Action("Techdays")}"> Para saber mais</a>
+        </h1>
+    </div>
+  <div class="links">
+    <ul>
+      <li>
+        NHibernate <br/> <a href="https://www.hibernate.org/343.html">https://www.hibernate.org/343.html</a>
+      </li>
+      <li>
+        Fluent NHibernate <br/> <a href="http://fluentnhibernate.org/">http://fluentnhibernate.org/</a>
+      </li>
+      <li>
+        NHProf - NHibernate profiler <br/> <a href="http://nhprof.com/">http://nhprof.com/</a>
+      </li>
+      <li>
+        Spark - viewengine <br/> <a href="http://sparkviewengine.com/">http://sparkviewengine.com/</a>
+      </li>
+      <li>
+        Autofac - IoC container <br/> <a href="http://code.google.com/p/autofac/">http://code.google.com/p/autofac/</a>
+      </li>
+      <li>
+        SQLite - Base de dados embebida <br/> <a href="http://sqlite.phxsoftware.com/">http://sqlite.phxsoftware.com/</a>
+      </li>
+      <li>
+        SQLite Manager for Firefox - Gestor de BDs SQLite <br/> <a href="https://addons.mozilla.org/en-US/firefox/addon/5817">https://addons.mozilla.org/en-US/firefox/addon/5817</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\site.css" />
+    <Content Include="Content\Techdays.png" />
     <Content Include="Content\typogridphy.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -112,6 +113,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Views\Home\Patrocinadores.spark" />
+    <None Include="Views\Home\Techdays.spark" />
+    <None Include="Views\Home\Links.spark" />
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Home\Adicionar.spark" />
     <None Include="Views\Layouts\Application.spark" />

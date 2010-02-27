@@ -1,0 +1,5 @@
+<div >
+  <a href="${Url.Action("Patrocinadores")}">
+    <img width="100%" src="${Url.Content("~/Content/Techdays.png")}"/>
+  </a>
+</div>

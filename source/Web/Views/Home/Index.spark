@@ -2,7 +2,7 @@
 <div id="wrapper">
     <div id="header">
         <h1>
-            Lista de casas<span class="mini"><a href="${Url.Action("Adicionar")}">adicionar</a></span>
+          <a href="${Url.Action("Links")}"> Lista de casas</a><span class="mini"><a href="${Url.Action("Adicionar")}">adicionar</a></span>
         </h1>
     </div>
     <for each="var casa in Model.Casas">
